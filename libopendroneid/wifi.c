@@ -185,7 +185,7 @@ void drone_export_gps_data(const ODID_UAS_Data *UAS_Data, char *buf, size_t buf_
     mprintf("\t\t\t\"AuthType\": %d,\n", UAS_Data->Auth[0].AuthType);
     mprintf("\t\t\t\"LastPageIndex\": %d,\n", UAS_Data->Auth[0].LastPageIndex);
     mprintf("\t\t\t\"Length\": %d,\n", UAS_Data->Auth[0].Length);
-    mprintf("\t\t\t\"Timestamp\": %u", UAS_Data->Auth[0].Timestamp);
+    mprintf("\t\t\t\"Timestamp\": %lu", (unsigned long)UAS_Data->Auth[0].Timestamp);
     for (int i = 0; i < ODID_AUTH_MAX_PAGES; i++) {
         if (!UAS_Data->AuthValid[i] || (i > UAS_Data->Auth[0].LastPageIndex))
             continue;
@@ -210,7 +210,7 @@ void drone_export_gps_data(const ODID_UAS_Data *UAS_Data, char *buf, size_t buf_
     mprintf("\t\t\t\"CategoryEU\": %d,\n", UAS_Data->System.CategoryEU);
     mprintf("\t\t\t\"ClassEU\": %d,\n", UAS_Data->System.ClassEU);
     mprintf("\t\t\t\"OperatorAltitudeGeo\": %f,\n", (double) UAS_Data->System.OperatorAltitudeGeo);
-    mprintf("\t\t\t\"Timestamp\": %u\n", UAS_Data->System.Timestamp);
+    mprintf("\t\t\t\"Timestamp\": %lu\n", (unsigned long)UAS_Data->System.Timestamp);
     mprintf("\t\t},\n");
 
     mprintf("\t\t\"OperatorID\": {\n");
